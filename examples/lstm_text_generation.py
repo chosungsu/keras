@@ -23,6 +23,14 @@ import random
 import sys
 import io
 
+'''
+corpus length: 600893
+total chars: 57
+nb sequences: 200285
+Vectorization...
+Build model...
+'''
+
 path = get_file(
     'nietzsche.txt',
     origin='https://s3.amazonaws.com/text-datasets/nietzsche.txt')
@@ -80,6 +88,7 @@ def on_epoch_end(epoch, _):
     print('----- Generating text after Epoch: %d' % epoch)
 
     start_index = random.randint(0, len(text) - maxlen - 1)
+    # Loop in list[0.2, 0.5, 1.0, 1.2]
     for diversity in [0.2, 0.5, 1.0, 1.2]:
         print('----- diversity:', diversity)
 
